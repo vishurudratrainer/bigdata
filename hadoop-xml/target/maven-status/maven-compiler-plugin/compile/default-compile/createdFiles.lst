@@ -1,0 +1,5 @@
+XmlDriver$Map.class
+XmlDriver$XmlInputFormat1.class
+XmlDriver.class
+XmlDriver$Reduce.class
+XmlDriver$XmlInputFormat1$XmlRecordReader.class

@@ -1,0 +1,3 @@
+com\training\hadoop\CombineBooksJob$Map.class
+com\training\hadoop\CombineBooksJob$Reduce.class
+com\training\hadoop\CombineBooksJob.class
