@@ -1,0 +1,64 @@
+format namenode
+hdfs namenode -format
+Starting Hadoop services
+.\start-dfs.cmd
+Start yarm service
+./start-yarn.cmd
+https://www.dll-files.com/msvcr100.dll.html
+jps
+
+Name node web page: http://localhost:9870/dfshealth.html
+Data node web page: http://localhost:9864/datanode.html
+Yarn web page: http://localhost:8088/cluster
+
+mklink /J  D:\cygdrive\d\ D:\
+hdfs dfs -mkdir /test
+
+hdfs dfs -put ./data.txt /test
+hdfs dfs -put ./chardata.txt /test
+hadoop jar wordcount-demo-1.0-SNAPSHOT.jar WordCountJob /test/data.txt /r_output
+hadoop jar charcount-demo-1.0-SNAPSHOT.jar CharCountJob /test/chardata.txt /char_output
+C:\hadoop_env\db-derby-10.14.2.0\bin\StartNetworkServer -h 0.0.0.0
+hadoop jar hadoop-json-1.0-SNAPSHOT.jar -libjars D:/hadoopcode/hadoop-json/target/json-20210307.jar   com.training.hadoop.CombineBooksJob /test/jsondata.txt /bookoutput2 
+for hive use 1.8
+export JAVA_HOME='/cygdrive/d/Java/jdk8'
+export PATH=$PATH:$JAVA_HOME/bin
+export HADOOP_HOME='/cygdrive/d/hadoop-env/hadoop-3.2.2'
+export PATH=$PATH:$HADOOP_HOME/bin
+export HIVE_HOME='/cygdrive/d/hadoop-env/apache-hive-3.1.2-bin'
+export PATH=$PATH:$HIVE_HOME/bin
+export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HIVE_HOME/lib/*.jar
+E:\hadoop-env\db-derby-10.14.2.0\bin\StartNetworkServer -h 0.0.0.0
+$HIVE_HOME/bin/schematool -dbType derby -upgradeSchemaFrom 3.1.0
+$HIVE_HOME/bin/schematool -dbType derby -initSchema
+hive --service hiveserver2 start
+hive --service metastore 
+CREATE TABLE IF NOT EXISTS employee ( eid int, name String,
+salary String, destination String)
+COMMENT 'Employee details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH '/home/user/sample.txt' into table userdb.employee;
+$ export JAVA_HOME='/cygdrive/d/Java/java-se-8u41-ri'
+
+DELL@DESKTOP-7BKAQ38 /cygdrive/d/hadoop-env/apache-hive-3.1.2-bin
+$ export PATH=$PATH:$JAVA_HOME/bin
+hdfs dfs -ls /
+sqoop list-databases --connect jdbc:mysql://localhost/ --username root -P
+
+hdfs dfs -ls /tmp | sort -k6,7
+And for hadoop 2.7.x ls command , there are following options available :
+
+Usage: hadoop fs -ls [-d] [-h] [-R] [-t] [-S] [-r] [-u] <args>
+
+Options:
+-d: Directories are listed as plain files.
+-h: Format file sizes in a human-readable fashion (eg 64.0m instead of 67108864).
+-R: Recursively list subdirectories encountered.
+-t: Sort output by modification time (most recent first).
+-S: Sort output by file size.
+-r: Reverse the sort order.
+-u: Use access time rather than modification time for display and sorting.

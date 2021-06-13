@@ -1,0 +1,11 @@
+Apache Hadoop 3.2.2
+Apache Hadoop 3.2.2 incorporates a number of significant enhancements over the previous major release line (hadoop-3.2).
+
+Overview
+Users are encouraged to read the full set of release notes. This page provides an overview of the major changes.
+
+ABFS: fix for Sever Name Indication (SNI)
+ABFS: Bug fix to support Server Name Indication (SNI).
+
+Setting permissions on name directory fails on non posix compliant filesystems
+Fixed namenode/journal startup on Windows.

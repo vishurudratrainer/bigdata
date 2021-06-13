@@ -1,0 +1,157 @@
+Purpose:
+
+· To give a detailed overview of Hadoop.
+
+· To enable students with detailed understanding of FS shell commands.
+
+· To explain usage of tools like Sqoop for data ingestion to HDFS.
+
+· To provide understanding of Hive for querying and analyzing data stored in HDFS.
+
+High level overview of Impala, Map Reduce and Yarn
+
+ 
+
+Target Audience
+
+This course is designed for anyone who is
+
+· Wanting to understand Hadoop architecture and is interested in workshop oriented instructor led class to practice Hadoop FS shell commands..
+
+· A Business Analyst or Developer with Data Warehousing background and is looking at alternative approach to data analysis and storage
+
+ 
+
+Learning Objectives
+
+· Learn about Hadoop Distributed File System (HDFS) and make sense of how to function with it.
+
+· Learn about anatomy of Hadoop cluster
+
+· Ingest Data to HDFS using Sqoop
+
+· Learn data warehouse framework for querying and analysis of data i.e. stored in HDFS.
+
+    Overview of Impala, Map-Reduce and yarn
+
+ 
+
+Course Outline
+
+Module 1: Getting started with HDFS – 2 hrs.
+
+1. Hadoop ecosystem components
+
+2. Anatomy of Hadoop cluster
+
+3. Concepts: Node, Rack, Cluster, Dataflow, Blocks, Name node, Secondary name node, Job tracker, Task tracker, Data node, Processes
+
+4. HDFS Architecture
+
+5. The Anatomy of a File Write
+
+6. Rack Awareness
+
+ 
+
+Module 2: Setup Hadoop – 1.5 hr including initial lab exercises.
+
+1. Hadoop Deployment Modes
+
+a. Pseudo mode
+
+b. Cluster mode
+
+2. Configurations
+
+3. Hadoop Processes- NN, SNN, JT, DN, TT
+
+4. Common errors when running Hadoop cluster
+
+ 
+
+Lab exercise –
+
+a. Single Node Setup and multi node set up
+
+b. Begin Working with Distributed Mode Hadoop cluster
+
+ 
+
+Module 3: Interacting with HDFS using command line – 1.5 hr – primarily lab
+
+1. The FS Shell
+
+2. Hadoop File System commands
+
+3. Lab exercise
+
+a. Fs Shell commands and File system operations
+
+ 
+
+ 
+
+Module 4 : Map Reduce and Yarn – High Level only – 1.5 Hr
+
+5. Introduction to Map Reduce, YARN
+
+6. YARN Daemons – ResourceManager, NodeManager, Application Master
+
+7. Introduction to Impala – No lab exercises required – Examples will suffice
+
+ 
+
+ 
+
+ 
+
+Module 5: Getting data into Hadoop – 3 hr including lab
+
+1. Data Ingest layers’ introduction
+
+2. How Sqoop works
+
+3. Setup
+
+4. Import
+
+5. Import-all-Tables
+
+6. Export
+
+7. Job
+
+8. Lab exercise –
+
+a. Sqoop Import and Export (MySQL data source)
+
+ 
+
+Module 6: Hive – 3.5 Hours ( including LAB )
+
+1. Hive – Architecture & Modes
+
+2. Data Types and Create & Drop Database
+
+3. Create, Alter & Drop Table
+
+4. Indexes and View
+
+5. Queries: Order By, Group By
+
+6. Join and Subquery
+
+7. Hive Query Language (HiveQL)
+
+8. Demo on Loading JSON, Text Data
+
+9.  Partitioning
+
+10. UDFs, reading different data formats
+
+11. SerDe in Hive
+
+12.  Hive for ETL
+
+ 

@@ -1,0 +1,6 @@
+1,Vishwa,22,IIT,IT
+2,Raj,22,IIT,IT
+3,Raju,22,IIT,IT
+4,Vishwa1,22,IIT,COMP
+5,Raj1,22,IIT,COMP
+6,Raju1,22,IIT,COMP
