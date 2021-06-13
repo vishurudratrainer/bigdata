@@ -1,0 +1,163 @@
+hive
+
+CREATE TABLE FILES (line STRING);
+ LOAD DATA INPATH '/test/data.txt' OVERWRITE INTO TABLE FILES;
+ 
+ CREATE TABLE word_counts AS
+SELECT word, count(1) AS count FROM
+(SELECT explode(split(line, ' ')) AS word FROM FILES) w
+GROUP BY word
+ORDER BY word;
+
+--interal table with comments
+describe  employee;
+create table employee (Id int comment 'Employee Id', Name string comment 'Employee Name', Salary float comment 'Employee Salary')  
+row format delimited  
+fields terminated by ',' ; 
+
+drop table employee; 
+comment 'Table Description'  
+TBLProperties ('creator'='Vishwa', 'created_at' = '2021-06-06 11:00:00');  
+Hive allows creating a new table by using the schema of an existing table.
+create table if not exists copy_employee  like employee;  
+--external table
+hdfs dfs -mkdir /HiveDirectory  
+create external table emplist (Id int, Name string , Salary float)  
+row format delimited  
+ fields terminated by ','   
+location '/HiveDirectory';  
+
+hdfs dfs -put ./emp.csv /HiveDirectory
+
+LOAD DATA  INPATH '/test/emp.txt' into table employee;
+
+Alter table emp rename to employee_data;  
+Alter table employee_data add columns (age int);  
+Alter table employee_data change name first_name string;  
+Hive allows us to delete one or more columns by replacing them with the new columns. Thus, we cannot drop the column directly.
+
+
+Static Partitioning
+In static or manual partitioning, it is required to pass the values of partitioned columns manually while loading the data into the table. Hence, the data file doesn't contain the partitioned columns.
+
+create table student (id int, name string, age int,  institute string)   
+partitioned by (course string)  
+row format delimited  
+fields terminated by ',';  
+
+
+ load data  inpath '/test/student.txt' into table student   partition(course= "IT");  
+  load data  inpath '/test/student1.txt' into table student   partition(course= "COMP");
+ /user/hive/warehouse
+ 
+  hdfs dfs -ls  /user/hive/warehouse/student
+  
+  
+  Dynamic partitioning
+set hive.exec.dynamic.partition=true;    
+ set hive.exec.dynamic.partition.mode=nonstrict;  
+ 
+ create table stud_demo(id int, name string, age int, institute string, course string)   
+row format delimited  
+fields terminated by ','; 
+
+hdfs dfs -put ./student_course.txt /test
+
+  load data  inpath '/test/student_course.txt' into table stud_demo  
+create table student_part (id int, name string, age int, institute string)   
+partitioned by (course string)  
+row format delimited  
+fields terminated by ',';  
+
+ insert into student_part  
+partition(course)  
+select id, name, age, institute, course  
+from stud_demo;  
+hdfs dfs -ls  /user/hive/warehouse/student_part
+
+Bucketing
+
+Bucketing in Hive
+The bucketing in Hive is a data organizing technique. It is similar to partitioning in Hive with an added functionality that it divides large datasets into more manageable parts known as buckets. So, we can use bucketing in Hive when the implementation of partitioning becomes difficult.
+
+create table emp_demo (Id int, Name string , Salary float)    
+row format delimited    
+fields terminated by ',' ;   
+ However, we can also divide partitions further in buckets.
+ 
+ LOAD DATA  INPATH '/test/emp.txt' into table emp_demo;
+ set hive.enforce.bucketing = true; 
+ 
+ create table emp_bucket(Id int, Name string , Salary float)    
+clustered by (Id) into 3 buckets  
+row format delimited    
+fields terminated by ',' ;   
+
+insert overwrite table emp_bucket select * from emp_demo;  
+
+hdfs dfs -ls  /user/hive/warehouse/emp_bucket/
+
+ select id, name, salary + 50 from emp_demo
+select id, name, (salary * 10) /100 from emp_demo; 
+select * from emp_demo where salary >= 25000;     
+
+eturn type	Functions	Description
+BIGINT	round(num)	It returns the BIGINT for the rounded value of DOUBLE num.
+BIGINT	floor(num)	It returns the largest BIGINT that is less than or equal to num.
+BIGINT	ceil(num), ceiling(DOUBLE num)	It returns the smallest BIGINT that is greater than or equal to num.
+DOUBLE	exp(num)	It returns exponential of num.
+DOUBLE	ln(num)	It returns the natural logarithm of num.
+DOUBLE	log10(num)	It returns the base-10 logarithm of num.
+DOUBLE	sqrt(num)	It returns the square root of num.
+DOUBLE	abs(num)	It returns the absolute value of num.
+DOUBLE	sin(d)	It returns the sin of num, in radians.
+DOUBLE	asin(d)	It returns the arcsin of num, in radians.
+DOUBLE	cos(d)	It returns the cosine of num, in radians.
+DOUBLE	acos(d)	It returns the arccosine of num, in radians.
+DOUBLE	tan(d)	It returns the tangent of num, in radians.
+DOUBLE	atan(d)	It returns the arctangent of num, in radians.
+select Id, Name, sqrt(Salary) from employee_data ;
+select max(Salary) from employee_data;   
+
+Return Type	Operator	Description
+BIGINT	count(*)	It returns the count of the number of rows present in the file.
+DOUBLE	sum(col)	It returns the sum of values.
+DOUBLE	sum(DISTINCT col)	It returns the sum of distinct values.
+DOUBLE	avg(col)	It returns the average of values.
+DOUBLE	avg(DISTINCT col)	It returns the average of distinct values.
+DOUBLE	min(col)	It compares the values and returns the minimum one form it.
+DOUBLE	max(col)	It compares the values and returns the maximum one form it.
+
+Return Type	Operator	Description
+INT	length(str)	It returns the length of the string.
+STRING	reverse(str)	It returns the string in reverse order.
+STRING	concat(str1, str2, ...)	It returns the concatenation of two or more strings.
+STRING	substr(str, start_index)	It returns the substring from the string based on the provided starting index.
+STRING	substr(str, int start, int length)	It returns the substring from the string based on the provided starting index and length.
+STRING	upper(str)	It returns the string in uppercase.
+STRING	lower(str)	It returns the string in lowercase.
+STRING	trim(str)	It returns the string by removing whitespaces from both the ends.
+STRING	ltrim(str)	It returns the string by removing whitespaces from left-hand side.
+TRING	rtrim(str)	It returns the string by removing whitespaces from right-hand side.
+
+select Id, upper(Name) from employee_data;  
+
+select department, sum(salary) from emp group by department;  
+
+select course, count(id) from student group by course;
+
+select department, sum(salary) from emp group by department having sum(salary)>=35000;  
+
+In HiveQL, ORDER BY clause performs a complete ordering of the query result set. Hence, the complete data is passed through a single reducer. This may take much time in the execution of large datasets. However, we can use LIMIT to minimize the sorting time.
+
+HiveQL - SORT BY Clause
+The HiveQL SORT BY clause is an alternative of ORDER BY clause. It orders the data within each reducer. Hence, it performs the local ordering, where each reducer's output is sorted separately. It may also give a partially ordered result.
+
+HiveQL - SORT BY Clause
+The HiveQL SORT BY clause is an alternative of ORDER BY clause. It orders the data within each reducer. Hence, it performs the local ordering, where each reducer's output is sorted separately. It may also give a partially ordered result.
+elect  e1.empname, e2.department_name from employee e1 join employee_department e2 on e1.empid= e2.depid;
+ select  e1.empname, e2.department_name from employee e1 left outer join employee_department e2 on e1.empid= e2.depid;
+ hive> select  e1.empname, e2.department_name from employee e1 right outer join employee_department e2 on e1.empid= e2.depid;  
+
+select  e1.empname, e2.department_name from employee e1 full outer join employee_department e2 on e1.empid= e2.depid;  
+
