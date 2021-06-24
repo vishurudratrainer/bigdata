@@ -1,0 +1,107 @@
+https://gist.github.com/adhipg/1600028
+
+CREATE TABLE IF NOT EXISTS `country` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iso` char(2) NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `nicename` varchar(80) NOT NULL,
+  `iso3` char(3) DEFAULT NULL,
+  `numcode` smallint(6) DEFAULT NULL,
+  `phonecode` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+INSERT INTO `country` (`id`, `iso`, `name`, `nicename`, `iso3`, `numcode`, `phonecode`) VALUES
+(1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93),
+(2, 'AL', 'ALBANIA', 'Albania', 'ALB', 8, 355),
+(3, 'DZ', 'ALGERIA', 'Algeria', 'DZA', 12, 213),
+(4, 'AS', 'AMERICAN SAMOA', 'American Samoa', 'ASM', 16, 1684),
+(5, 'AD', 'ANDORRA', 'Andorra', 'AND', 20, 376),
+(6, 'AO', 'ANGOLA', 'Angola', 'AGO', 24, 244),
+(7, 'AI', 'ANGUILLA', 'Anguilla', 'AIA', 660, 1264),
+(8, 'AQ', 'ANTARCTICA', 'Antarctica', NULL, NULL, 0),
+(9, 'AG', 'ANTIGUA AND BARBUDA', 'Antigua and Barbuda', 'ATG', 28, 1268),
+(10, 'AR', 'ARGENTINA', 'Argentina', 'ARG', 32, 54),
+(11, 'AM', 'ARMENIA', 'Armenia', 'ARM', 51, 374),
+(12, 'AW', 'ARUBA', 'Aruba', 'ABW', 533, 297);
+INSERT INTO `country` (`id`, `iso`, `name`, `nicename`, `iso3`, `numcode`, `phonecode`) VALUES
+(13, 'AU', 'AUSTRALIA', 'Australia', 'AUS', 36, 61),
+(14, 'AT', 'AUSTRIA', 'Austria', 'AUT', 40, 43),
+(15, 'AZ', 'AZERBAIJAN', 'Azerbaijan', 'AZE', 31, 994),
+(16, 'BS', 'BAHAMAS', 'Bahamas', 'BHS', 44, 1242),
+(17, 'BH', 'BAHRAIN', 'Bahrain', 'BHR', 48, 973),
+(18, 'BD', 'BANGLADESH', 'Bangladesh', 'BGD', 50, 880),
+(19, 'BB', 'BARBADOS', 'Barbados', 'BRB', 52, 1246),
+(20, 'BY', 'BELARUS', 'Belarus', 'BLR', 112, 375),
+(21, 'BE', 'BELGIUM', 'Belgium', 'BEL', 56, 32),
+(22, 'BZ', 'BELIZE', 'Belize', 'BLZ', 84, 501),
+(23, 'BJ', 'BENIN', 'Benin', 'BEN', 204, 229),
+(24, 'BM', 'BERMUDA', 'Bermuda', 'BMU', 60, 1441),
+(25, 'BT', 'BHUTAN', 'Bhutan', 'BTN', 64, 975),
+(26, 'BO', 'BOLIVIA', 'Bolivia', 'BOL', 68, 591),
+(27, 'BA', 'BOSNIA AND HERZEGOVINA', 'Bosnia and Herzegovina', 'BIH', 70, 387),
+(28, 'BW', 'BOTSWANA', 'Botswana', 'BWA', 72, 267),
+(29, 'BV', 'BOUVET ISLAND', 'Bouvet Island', NULL, NULL, 0),
+(30, 'BR', 'BRAZIL', 'Brazil', 'BRA', 76, 55),
+(31, 'IO', 'BRITISH INDIAN OCEAN TERRITORY', 'British Indian Ocean Territory', NULL, NULL, 246),
+(32, 'BN', 'BRUNEI DARUSSALAM', 'Brunei Darussalam', 'BRN', 96, 673),
+(33, 'BG', 'BULGARIA', 'Bulgaria', 'BGR', 100, 359),
+(34, 'BF', 'BURKINA FASO', 'Burkina Faso', 'BFA', 854, 226),
+(35, 'BI', 'BURUNDI', 'Burundi', 'BDI', 108, 257),
+(36, 'KH', 'CAMBODIA', 'Cambodia', 'KHM', 116, 855),
+(37, 'CM', 'CAMEROON', 'Cameroon', 'CMR', 120, 237),
+(38, 'CA', 'CANADA', 'Canada', 'CAN', 124, 1),
+(39, 'CV', 'CAPE VERDE', 'Cape Verde', 'CPV', 132, 238),
+(40, 'KY', 'CAYMAN ISLANDS', 'Cayman Islands', 'CYM', 136, 1345),
+(41, 'CF', 'CENTRAL AFRICAN REPUBLIC', 'Central African Republic', 'CAF', 140, 236),
+(42, 'TD', 'CHAD', 'Chad', 'TCD', 148, 235),
+(43, 'CL', 'CHILE', 'Chile', 'CHL', 152, 56),
+(44, 'CN', 'CHINA', 'China', 'CHN', 156, 86),
+(45, 'CX', 'CHRISTMAS ISLAND', 'Christmas Island', NULL, NULL, 61),
+(46, 'CC', 'COCOS (KEELING) ISLANDS', 'Cocos (Keeling) Islands', NULL, NULL, 672),
+(47, 'CO', 'COLOMBIA', 'Colombia', 'COL', 170, 57),
+(48, 'KM', 'COMOROS', 'Comoros', 'COM', 174, 269),
+(49, 'CG', 'CONGO', 'Congo', 'COG', 178, 242),
+(50, 'CD', 'CONGO, THE DEMOCRATIC REPUBLIC OF THE', 'Congo, the Democratic Republic of the', 'COD', 180, 242),
+(51, 'CK', 'COOK ISLANDS', 'Cook Islands', 'COK', 184, 682),
+(52, 'CR', 'COSTA RICA', 'Costa Rica', 'CRI', 188, 506),
+(53, 'CI', 'COTE D''IVOIRE', 'Cote D''Ivoire', 'CIV', 384, 225),
+(54, 'HR', 'CROATIA', 'Croatia', 'HRV', 191, 385),
+(55, 'CU', 'CUBA', 'Cuba', 'CUB', 192, 53),
+(56, 'CY', 'CYPRUS', 'Cyprus', 'CYP', 196, 357),
+(57, 'CZ', 'CZECH REPUBLIC', 'Czech Republic', 'CZE', 203, 420);
+ 
+export SQOOP_HOME=/cygdrive/c/hadoop_env/sqoop-1.4.7.bin__hadoop-2.6.0 export PATH=$PATH:$SQOOP_HOME/bin
+sqoop list-databases --connect jdbc:mysql://localhost/ --username root -P
+sqoop list-tables --connect jdbc:mysql://localhost/sample --username root -P
+
+sqoop import --connect "jdbc:mysql://localhost/sample" --username root -P --table   country -target-dir /country
+sqoop import --connect "jdbc:mysql://localhost/sample" --username root -P --table   country -target-dir /countrywitha --where "iso like 'A%'" -m 1  
+sqoop export --connect "jdbc:mysql://localhost/sample" --username root -P --table   country2  --export-dir   /country1
+sqoop job --create myjob \
+-- import \
+--connect jdbc:mysql://localhost/sample \
+--username root \
+--password root \
+--table country \
+--m 1 \
+--target-dir /country
+sqoop job --show myjob
+sqoop job --delete myjob
+sqoop job --show myjob
+sqoop job --exec myjob
+CREATE TABLE IF NOT EXISTS country (id int,iso string ,name string,nicename string ,iso3 string ,numcode int ,phonecode int   );
+sqoop export --connect "jdbc:mysql://localhost/sample" --username root -P --table   country2  --export-dir   /user/hive/warehouse/country --input-fields-terminated-by ',';  
+
+
+
+CREATE TABLE IF NOT EXISTS `country2` (
+  `id` int(11) ,
+  `iso` char(2) ,
+  `name` varchar(80) ,
+  `nicename` varchar(80) ,
+  `iso3` char(3) ,
+  `numcode` smallint(6) ,
+  `phonecode` int(5) ,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
